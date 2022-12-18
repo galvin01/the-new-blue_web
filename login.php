@@ -1,115 +1,46 @@
-<!-- PHP code to establish connection with the localserver -->
 <?php
-
-// Username is root
-$user = 'root';
-$password = '';
-
-// Database name is geeksforgeeks
-$database = 'work';
-
-// Server is localhost with
-// port number 3306
-$servername='localhost:3306';
-$mysqli = new mysqli($servername, $user,
-				$password, $database);
-
-// Checking for connections
-if ($mysqli->connect_error) {
-	die('Connect Error (' .
-	$mysqli->connect_errno . ') '.
-	$mysqli->connect_error);
+require 'config.php';
+if(!empty($_SESSION["id"])){
+  header("Location: index.php");
 }
-
-// SQL query to select data from database
-$sql = " SELECT * FROM war ";
-$result = $mysqli->query($sql);
-$mysqli->close();
+if(isset($_POST["submit"])){
+  $usernameemail = $_POST["usernameemail"];
+  $password = $_POST["password"];
+  $result = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$usernameemail' OR email = '$usernameemail'");
+  $row = mysqli_fetch_assoc($result);
+  if(mysqli_num_rows($result) > 0){
+    if($password == $row['password']){
+      $_SESSION["login"] = true;
+      $_SESSION["id"] = $row["id"];
+      header("Location: index.php");
+    }
+    else{
+      echo
+      "<script> alert('Wrong Password'); </script>";
+    }
+  }
+  else{
+    echo
+    "<script> alert('User Not Registered'); </script>";
+  }
+}
 ?>
-<!-- HTML code to display data in tabular format -->
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>GFG User Details</title>
-	<!-- CSS FOR STYLING THE PAGE -->
-	<style>
-		table {
-			margin: 0 auto;
-			font-size: large;
-			border: 1px solid black;
-		}
-
-		h1 {
-			text-align: center;
-			color: #006600;
-			font-size: xx-large;
-			font-family: 'Gill Sans', 'Gill Sans MT',
-			' Calibri', 'Trebuchet MS', 'sans-serif';
-		}
-
-		td {
-			background-color: #E4F5D4;
-			border: 1px solid black;
-		}
-
-		th,
-		td {
-			font-weight: bold;
-			border: 1px solid black;
-			padding: 10px;
-			text-align: center;
-		}
-
-		td {
-			font-weight: lighter;
-		}
-	</style>
-</head>
-
-<body>
-	<section>
-		<h1>Passenger tickets</h1>
-		<!-- TABLE CONSTRUCTION -->
-		<table>
-			<tr>
-				<th>clientID</th>
-				<th>first_name</th>
-				<th>middle_name</th>
-				<th>surname_name</th>
-				<th>email</th>
-				<th>worker</th>
-				<th>password</th>
-				<th>gender</th>
-				<th>county</th>
-			</tr>
-			<!-- PHP CODE TO FETCH DATA FROM ROWS -->
-			<?php
-				// LOOP TILL END OF DATA
-				while($rows=$result->fetch_assoc())
-				{
-			?>
-			<tr>
-				<!-- FETCHING DATA FROM EACH
-					ROW OF EVERY COLUMN -->
-				<td><?php echo $rows['clientID'];?></td>
-				<td><?php echo $rows['first_name'];?></td>
-				<td><?php echo $rows['middle_name'];?></td>
-				<td><?php echo $rows['surname_name'];?></td>
-				<td><?php echo $rows['email'];?></td>
-				<td><?php echo $rows['worker'];?></td>
-				<td><?php echo $rows['password'];?></td>
-				<td><?php echo $rows['gender'];?></td>
-				<td><?php echo $rows['county'];?></td>
-			
-                <td><button type="" class=""><a href ="">Select</a></td>
-			</tr>
-			<?php
-				}
-			?>
-		</table>
-	</section>
-</body>
-
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <form class="" action="" method="post" autocomplete="off">
+      <label for="usernameemail">Username or Email : </label>
+      <input type="text" name="usernameemail" id = "usernameemail" required value=""> <br>
+      <label for="password">Password : </label>
+      <input type="password" name="password" id = "password" required value=""> <br>
+      <button type="submit" name="submit">Login</button>
+    </form>
+    <br>
+    <a href="registration.php">Registration</a>
+  </body>
 </html>

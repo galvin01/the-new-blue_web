@@ -1,5 +1,3 @@
 <?php
-
-$conn = mysqli_connect('localhost','root','pro_db') or die('connection failed');
-
-?>
+session_start();
+$conn = mysqli_connect("localhost", "root", "", "reglog");
