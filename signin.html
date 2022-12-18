@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign-in</title>
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+	<center>
+		<h1>Registation form</h1>
+		<form action="signin2.php" method="post">
+		<div class="container">
+ 
+    <div class="row">
+      <div class="col-25">
+        <label for="ClientID">ClientID</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="ClientID" name="ClientID" placeholder="Your ID..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="firstname">First Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="firstname" name="first_name" placeholder="Your first name..">
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-25">
+        <label for="middlename">Middle Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="middlename" name="middle_name" placeholder="Your middle name..">
+      </div>
+    </div>
+      <div class="row">
+      <div class="col-25">
+        <label for="lastname">Last Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lastname" name="last_name" placeholder="Your last name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="surnamename">Surname Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="surnamename" name="surname_name" placeholder="Your sur-name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="email">E-mail</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="email" name="email" placeholder="Your email..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="password">password</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="password" name="password" placeholder="Your password..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+
+        <label for="gender">Gender</label>
+      </div>
+      <div class="col-75">
+        <select id="gender" name="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Female">Bisexual</option>
+         </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+
+        <label for="county">County</label>
+      </div>
+      <div class="col-75">
+        <select id="county" name="county">
+          <option value="Nairobi">Nairobi</option>
+          <option value="Machakos">Machakos</option>
+          <option value="Mombasa">Mombasa</option>
+          <option value="Narok">Narok</option>
+          <option value="Makueni">Makueni</option>
+          <option value="kitui">kitui</option>
+          <option value="kiambu">kiambu</option>
+          <option value="Marsabit">Marsabit</option>
+          <option value="wajir">wajir</option>
+          <option value="Garissa">Garissa</option>
+          <option value="Kwale">Kwale</option>
+          <option value="Kilifi">Kilifi</option>
+          <option value="Mandera">Mandera</option>
+          <option value="Kisumu">Kisumu</option>
+          <option value="Nakuru">Nakuru</option>
+          <option value="Naivasha">Naivasha</option>
+          <option value="Busia">Busia</option>
+          <option value="Malindi">Malindi</option>
+          <option value="Nyeri">Nyeri</option>
+          <option value="Turkana">Turkana</option>
+          <option value="Samburu">Samburu</option>
+          <option value="West pokot">West pokot</option>
+          <option value="Trans Nzoia">Tran nzoia</option>
+          <option value="Uasin gishu">Uasin gishu</option>
+          <option value="Elgeyo">Elgeyo</option>
+          <option value="Samburu">Samburu</option>
+          <option value="Kisii">Kisii</option>
+          <option value="Homa bay">Homa bay</option>
+          <option value="Nyamira">Nyamira</option>
+          <option value="Vihiga">Vihiga</option>
+          <option value="Bomet">Bomet</option>
+          <option value="Kericho">Kericho</option>
+          <option value="Migori">Migori</option>
+          <option value="West pokot">West pokot</option>
+          <option value="Kakamega">Kakamega</option>
+          <option value="Lakipia">Lakipia</option>
+          <option value="Nandi">Nandi</option>
+          <option value="Muranga">Muranga</option>
+          <option value="Nyandarua">Nyadarua</option>
+          <option value="Embu">Embu</option>
+          <option value="Isiolo">Isiolo</option>
+          <option value="Kirinyaga">Kirinyaga</option>
+          <option value="Elgeyo Marakwet">Elgeyo Marakwet</option>
+          <option value="Nandi">Nandi</option>
+          <option value="Baringo">Baringo</option>
+
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <input type="Submit" value="submit">
+    </div><br>
+    <div class="row">
+      <input type="Reset" value="reset">
+    </div>
+  </form>
+</div>
+          
+</body>
+</html>
